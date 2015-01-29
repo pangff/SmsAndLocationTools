@@ -22,4 +22,11 @@ public class SdkUtil {
 		smsHelper = SmsHelper.getInstance();
 	}
 	
+	public static SmsHelper getSmsHelper(){
+		return smsHelper;
+	}
+	
+	public static RequestQueue getRequestQueue(){
+		return requestQueue;
+	}
 }
