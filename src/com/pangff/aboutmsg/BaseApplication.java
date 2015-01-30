@@ -1,10 +1,8 @@
 package com.pangff.aboutmsg;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.msg.sdk.SdkUtil;
-
 import android.app.Application;
+
+import com.msg.sdk.SdkUtil;
 
 public class BaseApplication extends Application{
 

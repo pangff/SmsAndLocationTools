@@ -1,4 +1,4 @@
-package com.phone.util;
+package com.msg.sdk.dao;
 
 import java.util.HashMap;
 import java.util.Map;

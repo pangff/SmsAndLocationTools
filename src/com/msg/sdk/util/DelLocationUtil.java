@@ -1,18 +1,17 @@
-package com.phone.sdk;
+package com.msg.sdk.util;
 
 import java.util.Map;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 
-import com.phone.util.AssetsDatabaseManager;
-import com.phone.util.DatabaseDAO;
-import com.phone.util.DialogUtils;
+import com.msg.sdk.dao.AssetsDatabaseManager;
+import com.msg.sdk.dao.DatabaseDAO;
 
-public class SearchNumber {
-	private static View view;
+public class DelLocationUtil {
 
-	public static void search(String phoneNumber, Context context,
+	public static Map<String,String> search(String phoneNumber, Context context,
 			DatabaseDAO dao) {
 
 		String prefix, center;
@@ -27,8 +26,8 @@ public class SearchNumber {
 			center = getCenterNumber(phoneNumber);
 			map = dao.queryNumber(prefix, center);
 		}
-
-		DialogUtils.showNumberDialog(context, view, map, phoneNumber);
+		map.put("del", phoneNumber);
+		return map;
 	}
 
 	public static void closeDatabase(){
@@ -53,6 +52,7 @@ public class SearchNumber {
 	}
 
 	/** 判断号码是否以零开头 */
+	@SuppressLint("NewApi")
 	public static boolean isZeroStarted(String number) {
 		if (number == null || number.isEmpty()) {
 			return false;
@@ -61,6 +61,7 @@ public class SearchNumber {
 	}
 
 	/** 得到号码的长度 */
+	@SuppressLint("NewApi")
 	public static int getNumLength(String number) {
 		if (number == null || number.isEmpty())
 			return 0;

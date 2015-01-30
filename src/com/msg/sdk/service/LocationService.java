@@ -1,4 +1,6 @@
-package com.msg.sdk;
+package com.msg.sdk.service;
+
+import com.msg.sdk.util.Constant;
 
 import android.app.Service;
 import android.content.Context;

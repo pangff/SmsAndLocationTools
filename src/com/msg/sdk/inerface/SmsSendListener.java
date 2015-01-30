@@ -1,4 +1,4 @@
-package com.msg.sdk;
+package com.msg.sdk.inerface;
 
 
 

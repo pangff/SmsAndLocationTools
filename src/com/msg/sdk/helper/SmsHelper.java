@@ -1,13 +1,19 @@
-package com.msg.sdk;
+package com.msg.sdk.helper;
 
-import com.phone.sdk.SearchNumber;
-import com.phone.util.AssetsDatabaseManager;
-import com.phone.util.DatabaseDAO;
+import java.util.Map;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import com.msg.sdk.dao.AssetsDatabaseManager;
+import com.msg.sdk.dao.DatabaseDAO;
+import com.msg.sdk.inerface.InterceptFilter;
+import com.msg.sdk.inerface.InterceptListener;
+import com.msg.sdk.inerface.SmsSendListener;
+import com.msg.sdk.util.DelLocationUtil;
+import com.msg.sdk.util.SmsSender;
 
 public class SmsHelper {
 	final String TAG = SmsHelper.class.getName();
@@ -20,7 +26,7 @@ public class SmsHelper {
 
 	private SmsSendListener smsSendListener;
 
-	protected static SmsHelper getInstance() {
+	public static SmsHelper getInstance() {
 		if (smsUtil == null) {
 			smsUtil = new SmsHelper();
 		}
@@ -68,14 +74,13 @@ public class SmsHelper {
 	/**
 	 *查询号码归属地
 	 */
-	public void searchNumber(Context context,String phoneNumber){
+	public Map<String,String> searchDelLocation(Context context,String phoneNumber){
 		AssetsDatabaseManager.initManager(context.getApplicationContext());
 		AssetsDatabaseManager mg = AssetsDatabaseManager
 				.getAssetsDatabaseManager();
 		SQLiteDatabase	sqliteDB = mg.getDatabase("number_location.zip");
 		DatabaseDAO dao = new DatabaseDAO(sqliteDB);
-		
-		SearchNumber.search(phoneNumber,context,dao);
+		return DelLocationUtil.search(phoneNumber,context,dao);
 	}
 	
 	/**
@@ -83,7 +88,7 @@ public class SmsHelper {
 	 * @return
 	 */
 	public void closeDatabase(){
-		SearchNumber.closeDatabase();
+		DelLocationUtil.closeDatabase();
 	}
 	
 

@@ -5,10 +5,12 @@ import android.content.Intent;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.msg.sdk.helper.SmsHelper;
+import com.msg.sdk.service.LocationService;
 
 public class SdkUtil {
 	protected static RequestQueue requestQueue;
-	protected static SmsHelper smsHelper;
+	public static SmsHelper smsHelper;
 	public static void init(Context context){
 		
 		/** 启动位置服务 **/
@@ -22,11 +24,9 @@ public class SdkUtil {
 		smsHelper = SmsHelper.getInstance();
 	}
 	
-	public static SmsHelper getSmsHelper(){
-		return smsHelper;
+	
+	public static void realease(){
+		
 	}
 	
-	public static RequestQueue getRequestQueue(){
-		return requestQueue;
-	}
 }

@@ -1,4 +1,4 @@
-package com.phone.util;
+package com.msg.sdk.dao;
 
 import java.io.BufferedInputStream;
 import java.io.File;
