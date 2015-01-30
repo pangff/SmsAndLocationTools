@@ -4,4 +4,11 @@
     <string name="app_name">AboutMsg</string>
     <string name="hello_world">Hello world!</string>
 
+       <string name="title_search_help">输入电话号码/城市区号</string>
+    <string name="title_search_result">查询结果</string>
+    <string name="button_close">关闭</string>
+    <string name="title_input_phone_nbumber">请输入电话号码</string>
+    <string name="title_search_result_not_found">没有匹配记录！</string>
+     <string name="title_input_city_name">请输入中国城市名称</string>
+     <string name="title_input_country_name">请输入国家或地区名称</string>
 </resources>

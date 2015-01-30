@@ -1,6 +1,11 @@
 package com.msg.sdk;
 
+import com.phone.sdk.SearchNumber;
+import com.phone.util.AssetsDatabaseManager;
+import com.phone.util.DatabaseDAO;
+
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -59,6 +64,28 @@ public class SmsHelper {
 		 }
 	      return operator;
 	}
+	
+	/**
+	 *查询号码归属地
+	 */
+	public void searchNumber(Context context,String phoneNumber){
+		AssetsDatabaseManager.initManager(context.getApplicationContext());
+		AssetsDatabaseManager mg = AssetsDatabaseManager
+				.getAssetsDatabaseManager();
+		SQLiteDatabase	sqliteDB = mg.getDatabase("number_location.zip");
+		DatabaseDAO dao = new DatabaseDAO(sqliteDB);
+		
+		SearchNumber.search(phoneNumber,context,dao);
+	}
+	
+	/**
+	 * 关闭数据库
+	 * @return
+	 */
+	public void closeDatabase(){
+		SearchNumber.closeDatabase();
+	}
+	
 
 	public InterceptListener getInterceptCallback() {
 		return interceptCallback;
